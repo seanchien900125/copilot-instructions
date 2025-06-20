@@ -1,9 +1,10 @@
 
 ## General Principles
 - Write code that is **readable, maintainable, and well-structured.**
-- When writing Python code, follow the coding style guide below.
+- When writing Python code, follow the **coding style guide** below.
 - Keep the code **simple and concise** while ensuring clarity-**avoid over-engineering.** 
 - Use English for comments and documentation, ensuring they are clear and helpful.
+- When writing git commit messages, follow the **git commit message conventions** below.
 
 ## Coding Style Guide
 
@@ -85,3 +86,37 @@
 - Default Argument Values don’t use mutable defaults: `def f(a, items=None):` not `def f(a, items=[]):`.
 - Comparisons to Singletons use `is` or `is not` when comparing with None, True, or False.
 - Boolean Tests use the fact that empty sequences are falsey: `if not seq:` instead of `if len(seq) == 0`.
+
+
+## Git Commit Message Conventions
+- use **English** for commit messages. 
+- Check branch name to identify the issue number and add it in the footer.
+- 採用 Conventional Commits 標準： 
+```
+<type>(<scope>): <主旨描述> 
+- <詳細描述>               # 選填
+- <footer>                # 選填，如關聯的 issue
+```
+- 各項描述：
+  - **type**（必填）：  
+    - **feat** : 新增功能；用於「引入新功能」相關的變更。
+    - **fix** : 修補錯誤；用於「修正程式錯誤」或「修復問題」的變更。  
+    - **docs** : 文件；如更新 README、註解，不影響程式。  
+    - **style** : 程式格式；如排版、縮排，不改程式行為。  
+    - **refactor** : 重構；如優化程式結構，不新增功能，也不改變既有行為。  
+    - **test** : 測試；如新增或修改單元／整合測試。  
+    - **chore** : 雜務；包含 CI 設定、腳本更新等，非 src 核心程式邏輯。 
+    - **release** : 發版；指打標籤、更新版本號等，適用於從 develop 合併至 main。
+  - **scope**（選填）：影響範圍，如 `auth`、`ui`、`api` 等。
+  - **主旨描述**：一句話精簡描述；英文開頭統一小寫。
+  - **詳細描述**:（選填）：針對主旨的補充說明。
+  - **footer**: 關聯的 issue、任務編號等。
+  - 範例： 
+```
+feat(auth): 新增 JWT 重新整理 Token 端點 
+<空行>
+ - 重構 Token 服務以支援刷新功能 
+ - 增加單元與整合測試 
+<空行>
+issues #456
+```
